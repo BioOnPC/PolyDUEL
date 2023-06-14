@@ -1,0 +1,88 @@
+{
+	"Name": "Phantasmagoria",
+	"Attributes": {
+		"Hurtboxes": [{
+			"XOffset": 0,
+			"YOffset": 0,
+			"Width": 40,
+			"Height": 80
+		}],
+		"ForwardWalkSpeed": 2,
+		"BackwardWalkSpeed": 2,
+		"Gravity": 1,
+		"IdleAnim": "PhantasmagoriaIdle",
+	},
+	"Moves": [
+		{
+			"Name": "JumpNeutral",
+			"FromIdle": false,
+			"Motion": "",
+			"Input": "",
+			"Priority": 1,
+			"Actions": [
+				{"Action": "SetYSpeed", "Amount": 15},
+			]
+		},
+		{
+			"Name": "JumpForward",
+			"FromIdle": false,
+			"Motion": "",
+			"Input": "",
+			"Priority": 1,
+			"Actions": [
+				{"Action": "Move", "Distance": 80, "Duration": 40, "Ease": 1.5},
+				{"Action": "SetYSpeed", "Amount": 15},
+			]
+		},
+		{
+			"Name": "JumpBackward",
+			"FromIdle": false,
+			"Motion": "",
+			"Input": "",
+			"Priority": 1,
+			"Actions": [
+				{"Action": "Move", "Distance": -80, "Duration": 40, "Ease": 1.5},
+				{"Action": "SetYSpeed", "Amount": 15},
+			]
+		},
+		{
+			"Name": "Grab",
+			"FromIdle": true,
+			"Motion": "",
+			"Input": "LS",
+			"Priority": 5,
+			"Actions": [
+				{"Action": "Hitbox", "Hitbox": {
+						"XOffset": 100,
+						"YOffset": -150,
+						"Width": 50,
+						"Height": 150,
+						"Duration": 10
+					}
+				}
+			]
+		},
+		{
+			"Name": "Dash",
+			"FromIdle": true,
+			"Motion": "66",
+			"Input": "",
+			"Priority": 1,
+			"Actions": [
+				{"Action": "Move", "Distance": 60, "Duration": 20, "Ease": 2},
+				{"Action": "Wait", "Duration": 20}
+			]
+		},
+		{
+			"Name": "BackDash",
+			"FromIdle": true,
+			"Motion": "44",
+			"Input": "",
+			"Priority": 1,
+			"Actions": [
+				{"Action": "Move", "Distance": -60, "Duration": 20, "Ease": 2},
+				{"Action": "Wait", "Duration": 20}
+			]
+		}
+	]
+}

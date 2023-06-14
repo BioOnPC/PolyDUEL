@@ -1,0 +1,880 @@
+{
+  "Name": "Id",
+  "Attributes": {
+    "Hurtboxes": [
+      {
+        "XOffset": 0,
+        "YOffset": 0,
+        "Width": 40,
+        "Height": 80
+      }
+    ],
+    "ForwardWalkSpeed": 2,
+    "BackwardWalkSpeed": 2,
+    "Gravity": 1,
+    "IdleAnim": "IdIdle"
+  },
+  "Moves": [
+    {
+      "Name": "JumpNeutral",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "8",
+      "Input": "",
+      "Priority": 1,
+      "Actions": [
+        {
+          "Action": "SetYSpeed",
+          "Amount": 15
+        }
+      ]
+    },
+    {
+      "Name": "JumpForward",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "9",
+      "Input": "",
+      "Priority": 1,
+      "Actions": [
+        {
+          "Action": "Move",
+          "Distance": 80,
+          "Duration": 40,
+          "Ease": 1.5
+        },
+        {
+          "Action": "SetYSpeed",
+          "Amount": 15
+        }
+      ]
+    },
+    {
+      "Name": "JumpBackward",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "7",
+      "Input": "",
+      "Priority": 1,
+      "Actions": [
+        {
+          "Action": "Move",
+          "Distance": -80,
+          "Duration": 40,
+          "Ease": 1.5
+        },
+        {
+          "Action": "SetYSpeed",
+          "Amount": 15
+        }
+      ]
+    },
+    {
+      "Name": "Dash",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "66",
+      "Input": "!",
+      "Priority": 1,
+      "Actions": [
+        {
+          "Action": "Move",
+          "Distance": 4,
+          "Duration": 1,
+          "Ease": 1
+        },
+        {
+          "Action": "Wait",
+          "Duration": 1
+        },
+        {
+          "Action": "CallMoveIfDirectionHeld",
+          "Button": "6",
+          "Move": "Dash"
+        },
+        {
+          "Action": "Move",
+          "Distance": 16,
+          "Duration": 8,
+          "Ease": 2
+        },
+        {
+          "Action": "Wait",
+          "Duration": 8
+        }
+      ]
+    },
+    {
+      "Name": "BackDash",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "44",
+      "Input": "!",
+      "Priority": 1,
+      "Actions": [
+        {
+          "Action": "Move",
+          "Distance": -80,
+          "Duration": 20,
+          "Ease": 2
+        },
+        {
+          "Action": "SetYSpeed",
+          "Amount": 5
+        },
+        {
+          "Action": "Wait",
+          "Duration": 20
+        }
+      ]
+    },
+    {
+      "Name": "5L",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "",
+      "Input": "L",
+      "Priority": 2,
+      "Actions": [
+        {
+          "Action": "Wait",
+          "Duration": 3
+        },
+        {
+          "Action": "SetSprite",
+          "Duration": 7,
+          "Sprite": "IdSlap"
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "Priority": 1,
+            "XOffset": 30,
+            "YOffset": 50,
+            "Width": 40,
+            "Height": 20,
+            "Duration": 3,
+			"Hitspark": "HitSpark",
+            "VerticalKnockback": 0,
+            "HorizontalKnockback": 8
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 7
+        }
+      ]
+    },
+    {
+      "Name": "2L",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "2",
+      "Input": "L",
+      "Priority": 2,
+      "Actions": [
+        {
+          "Action": "Wait",
+          "Duration": 3
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "XOffset": 30,
+            "YOffset": 10,
+            "Width": 30,
+            "Height": 20,
+            "Duration": 3
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 5
+        }
+      ]
+    },
+    {
+      "Name": "5M",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "",
+      "Input": "M",
+      "Priority": 2,
+      "Actions": [
+        {
+          "Action": "Wait",
+          "Duration": 6
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "Priority": 1,
+            "XOffset": 40,
+            "YOffset": 40,
+            "Width": 60,
+            "Height": 20,
+            "Duration": 8,
+            "VerticalKnockback": 0,
+            "HorizontalKnockback": 12
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 16
+        }
+      ]
+    },
+    {
+      "Name": "5H",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "",
+      "Input": "H",
+      "Priority": 2,
+      "Actions": [
+        {
+          "Action": "Wait",
+          "Duration": 12
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "Priority": 1,
+            "XOffset": 30,
+            "YOffset": 40,
+            "Width": 60,
+            "Height": 80,
+            "Duration": 12,
+            "VerticalKnockback": 12,
+            "HorizontalKnockback": 2,
+			"Hitstun": 15,
+			"HitstunType": 2
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 10
+        }
+      ]
+    },
+    {
+      "Name": "2H",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "2",
+      "Input": "H",
+      "Priority": 2,
+      "Actions": [
+        {
+          "Action": "Wait",
+          "Duration": 12
+        },
+        {
+          "Action": "Move",
+          "Distance": 120,
+          "Duration": 24,
+          "Ease": 2.5
+        },
+        {
+          "Action": "Wait",
+          "Duration": 8
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "Priority": 1,
+            "XOffset": 0,
+            "YOffset": 30,
+            "Width": 80,
+            "Height": 60,
+            "Duration": 2,
+            "Hitstop": 5,
+            "Hitstun": 2,
+            "VerticalKnockback": 0,
+            "HorizontalKnockback": 5
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 4
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "Priority": 1,
+            "XOffset": 0,
+            "YOffset": 30,
+            "Width": 80,
+            "Height": 60,
+            "Duration": 2,
+            "Hitstop": 2,
+            "VerticalKnockback": 0,
+            "HorizontalKnockback": 5
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 4
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "Priority": 1,
+            "XOffset": 0,
+            "YOffset": 30,
+            "Width": 80,
+            "Height": 60,
+            "Duration": 2,
+            "Hitstop": 2,
+            "VerticalKnockback": 3,
+            "HorizontalKnockback": 2
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 4
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "Priority": 1,
+            "XOffset": 0,
+            "YOffset": 30,
+            "Width": 80,
+            "Height": 60,
+            "Duration": 4,
+            "Hitstop": 5,
+            "VerticalKnockback": 8,
+            "HorizontalKnockback": 150
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 24
+        }
+      ]
+    },
+    {
+      "Name": "Mach Rest",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "24",
+      "Input": "L",
+      "Priority": 3,
+      "Actions": [
+        {
+          "Action": "Wait",
+          "Duration": 3
+        },
+        {
+          "Action": "Move",
+          "Distance": 180,
+          "Duration": 32,
+          "Ease": 1.5
+        },
+        {
+          "Action": "SetYSpeed",
+          "Amount": 20
+        },
+        {
+          "Action": "SetGravity",
+          "Duration": 32,
+          "Amount": 2
+        },
+        {
+          "Action": "StrikeInvul",
+          "Duration": 12
+        },
+        {
+          "Action": "WaitForGround"
+        },
+        {
+          "Action": "Wait",
+          "Duration": 6
+        }
+      ]
+    },
+    {
+      "Name": "Mach Beat",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "24",
+      "Input": "M",
+      "Priority": 3,
+      "Actions": [
+        {
+          "Action": "Wait",
+          "Duration": 3
+        },
+        {
+          "Action": "Move",
+          "Distance": 180,
+          "Duration": 32,
+          "Ease": 1.1
+        },
+        {
+          "Action": "SetYSpeed",
+          "Amount": 12
+        },
+        {
+          "Action": "Wait",
+          "Duration": 4
+        },
+        {
+          "Action": "ModifyHurtbox",
+          "Hurtbox": {
+            "XOffset": 0,
+            "YOffset": 20,
+            "Width": 50,
+            "Height": 50
+          },
+          "ID": 0,
+          "Duration": 26
+        },
+        {
+          "Action": "Wait",
+          "Duration": 12
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "XOffset": 50,
+            "YOffset": 50,
+            "Width": 50,
+            "Height": 50,
+            "Duration": 12
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 12
+        },
+        {
+          "Action": "WaitForGround"
+        },
+        {
+          "Action": "Wait",
+          "Duration": 12
+        }
+      ]
+    },
+    {
+      "Name": "Mach Chord",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "24",
+      "Input": "H",
+      "Priority": 3,
+      "Actions": [
+        {
+          "Action": "Wait",
+          "Duration": 6
+        },
+        {
+          "Action": "Move",
+          "Distance": 180,
+          "Duration": 32,
+          "Ease": 1.5
+        },
+        {
+          "Action": "SetYSpeed",
+          "Amount": 20
+        },
+        {
+          "Action": "SetGravity",
+          "Duration": 32,
+          "Amount": 1.8
+        },
+        {
+          "Action": "Wait",
+          "Duration": 16
+        },
+        {
+          "Action": "SetYSpeed",
+          "Amount": 15
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "XOffset": 0,
+            "YOffset": -50,
+            "Width": 50,
+            "Height": 100,
+            "Duration": 8
+          }
+        },
+        {
+          "Action": "WaitForGround"
+        },
+        {
+          "Action": "Wait",
+          "Duration": 12
+        }
+      ]
+    },
+    {
+      "Name": "Shmoove",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "24",
+      "Input": "S",
+      "Priority": 3,
+      "Actions": [
+        {
+          "Action": "Move",
+          "Distance": -120,
+          "Duration": 20,
+          "Ease": 2
+        },
+        {
+          "Action": "Wait",
+          "Duration": 15
+        },
+        {
+          "Action": "Wait",
+          "Duration": 30,
+          "RepeatActions": [
+            {
+              "Action": "CallMoveIfButtonPressed",
+              "Button": "L",
+              "Move": "Mach Beat"
+            },
+            {
+              "Action": "CallMoveIfButtonPressed",
+              "Button": "M",
+              "Move": "Dunk Slam"
+            },
+            {
+              "Action": "CallMoveIfButtonPressed",
+              "Button": "H",
+              "Move": "Hi Friend!"
+            },
+            {
+              "Action": "CallMoveIfButtonPressed",
+              "Button": "S",
+              "Move": "evoomsH"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "evoomsH",
+      "FromIdle": false,
+      "Aerial": false,
+      "Motion": "",
+      "Input": "S",
+      "Priority": 3,
+      "Actions": [
+        {
+          "Action": "Move",
+          "Distance": 120,
+          "Duration": 20,
+          "Ease": -2
+        },
+        {
+          "Action": "Wait",
+          "Duration": 30
+        }
+      ]
+    },
+    {
+      "Name": "Yoink",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "26",
+      "Input": "L",
+      "Priority": 3,
+      "Actions": [
+        {
+          "Action": "Move",
+          "Distance": 120,
+          "Duration": 20,
+          "Ease": 2
+        },
+        {
+          "Action": "SetYSpeed",
+          "Amount": 5
+        },
+        {
+          "Action": "Wait",
+          "Duration": 10
+        },
+        {
+          "Action": "WaitForGround"
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "XOffset": 30,
+            "YOffset": 50,
+            "Width": 50,
+            "Height": 75,
+            "Duration": 5,
+            "Hitstop": 5,
+            "OnHit": [
+              {
+                "Action": "GrabTarget",
+                "XOffset": 30,
+                "YOffset": 50
+              },
+              {
+                "Action": "Wait",
+                "Duration": 8
+              },
+              {
+                "Action": "Move",
+                "Distance": 80,
+                "Duration": 20,
+                "Ease": 2
+              },
+              {
+                "Action": "SetYSpeed",
+                "Amount": 10
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": 20,
+                "YOffset": 20
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": 0,
+                "YOffset": 0
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": -20,
+                "YOffset": 20
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": -30,
+                "YOffset": 50
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": -20,
+                "YOffset": 80
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": 0,
+                "YOffset": 100
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": 20,
+                "YOffset": 80
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": 30,
+                "YOffset": 50
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": 20,
+                "YOffset": 20
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": 0,
+                "YOffset": 0
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": -20,
+                "YOffset": 20
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": -30,
+                "YOffset": 50
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": -20,
+                "YOffset": 80
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": 0,
+                "YOffset": 100
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": 20,
+                "YOffset": 80
+              },
+              {
+                "Action": "Wait",
+                "Duration": 2
+              },
+              {
+                "Action": "MoveGrab",
+                "XOffset": 30,
+                "YOffset": 50
+              },
+              {
+                "Action": "ReleaseGrab",
+                "Hitstop": 15,
+                "Hitstun": 15,
+                "VerticalKnockback": 10,
+                "HorizontalKnockback": 5
+              }
+            ]
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 20
+        }
+      ]
+    },
+    {
+      "Name": "Dunk Slam",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "26",
+      "Input": "M",
+      "Priority": 3,
+      "Actions": [
+        {
+          "Action": "Move",
+          "Distance": 120,
+          "Duration": 20,
+          "Ease": 3
+        },
+        {
+          "Action": "SetYSpeed",
+          "Amount": 12
+        },
+        {
+          "Action": "Wait",
+          "Duration": 10
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "XOffset": 30,
+            "YOffset": 50,
+            "Width": 50,
+            "Height": 75,
+            "Duration": 12
+          }
+        },
+        {
+          "Action": "SetGravity",
+          "Duration": 5,
+          "Amount": 0
+        },
+        {
+          "Action": "SetYSpeed",
+          "Amount": 0
+        },
+        {
+          "Action": "WaitForGround"
+        },
+        {
+          "Action": "Wait",
+          "Duration": 15
+        }
+      ]
+    },
+    {
+      "Name": "Hi Friend!",
+      "FromIdle": true,
+      "Aerial": false,
+      "Motion": "26",
+      "Input": "H",
+      "Priority": 3,
+      "Actions": [
+        {
+          "Action": "Move",
+          "Distance": 200,
+          "Duration": 25,
+          "Ease": 1.25
+        },
+        {
+          "Action": "Wait",
+          "Duration": 25
+        },
+        {
+          "Action": "Hitbox",
+          "Hitbox": {
+            "XOffset": 30,
+            "YOffset": 50,
+            "Width": 50,
+            "Height": 75,
+            "Duration": 12
+          }
+        },
+        {
+          "Action": "Wait",
+          "Duration": 15
+        }
+      ]
+    }
+  ]
+}
