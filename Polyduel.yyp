@@ -40,7 +40,6 @@
   "resources": [
     {"id":{"name":"copyStruct","path":"scripts/copyStruct/copyStruct.yy",},},
     {"id":{"name":"Actions","path":"scripts/Actions/Actions.yy",},},
-    {"id":{"name":"P1","path":"objects/P1/P1.yy",},},
     {"id":{"name":"IdSlap","path":"sprites/IdSlap/IdSlap.yy",},},
     {"id":{"name":"InstanceCreate","path":"scripts/InstanceCreate/InstanceCreate.yy",},},
     {"id":{"name":"trace","path":"scripts/trace/trace.yy",},},

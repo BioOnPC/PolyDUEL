@@ -17,7 +17,7 @@
 //
 //Returns an updated State for next frame
 function InputManager(_Hooks, _State, _Player){
-	var logLength = 20; //how long the motion buffer should last
+	var logLength = 9; //how long the motion buffer should last
 	var pressedLogLength = 15; //how long the motion buffer should last for dash/22 inputs
 	var bufferLength = 5; //how long buffered moves should buffer for (for getups and cancels and such)
 	var chosenMove = noone;
