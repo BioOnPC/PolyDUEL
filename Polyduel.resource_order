@@ -28,6 +28,7 @@
     {"name":"CharSelectButton","order":1,"path":"objects/CharSelectButton/CharSelectButton.yy",},
     {"name":"Hittable","order":4,"path":"objects/Hittable/Hittable.yy",},
     {"name":"Sprite5","order":4,"path":"sprites/Sprite5/Sprite5.yy",},
+    {"name":"UberCont","order":8,"path":"objects/UberCont/UberCont.yy",},
     {"name":"PhantasmagoriaIdle","order":2,"path":"sprites/PhantasmagoriaIdle/PhantasmagoriaIdle.yy",},
     {"name":"Cancels","order":19,"path":"scripts/Cancels/Cancels.yy",},
     {"name":"IdIdle","order":1,"path":"sprites/IdIdle/IdIdle.yy",},

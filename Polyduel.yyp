@@ -35,7 +35,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.4.0.84",
+    "IDEVersion": "2023.6.0.89",
   },
   "resources": [
     {"id":{"name":"copyStruct","path":"scripts/copyStruct/copyStruct.yy",},},
@@ -43,6 +43,7 @@
     {"id":{"name":"IdSlap","path":"sprites/IdSlap/IdSlap.yy",},},
     {"id":{"name":"InstanceCreate","path":"scripts/InstanceCreate/InstanceCreate.yy",},},
     {"id":{"name":"trace","path":"scripts/trace/trace.yy",},},
+    {"id":{"name":"UI","path":"fonts/UI/UI.yy",},},
     {"id":{"name":"GameCont","path":"objects/GameCont/GameCont.yy",},},
     {"id":{"name":"PlayerDataHandler","path":"scripts/PlayerDataHandler/PlayerDataHandler.yy",},},
     {"id":{"name":"Statuses","path":"scripts/Statuses/Statuses.yy",},},
@@ -51,6 +52,7 @@
     {"id":{"name":"CharSelectButton","path":"objects/CharSelectButton/CharSelectButton.yy",},},
     {"id":{"name":"Hittable","path":"objects/Hittable/Hittable.yy",},},
     {"id":{"name":"Sprite5","path":"sprites/Sprite5/Sprite5.yy",},},
+    {"id":{"name":"UberCont","path":"objects/UberCont/UberCont.yy",},},
     {"id":{"name":"PhantasmagoriaIdle","path":"sprites/PhantasmagoriaIdle/PhantasmagoriaIdle.yy",},},
     {"id":{"name":"Cancels","path":"scripts/Cancels/Cancels.yy",},},
     {"id":{"name":"IdIdle","path":"sprites/IdIdle/IdIdle.yy",},},

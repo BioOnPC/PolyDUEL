@@ -21,6 +21,11 @@ function InputManager(_Hooks, _State, _Player){
 	var pressedLogLength = 15; //how long the motion buffer should last for dash/22 inputs
 	var bufferLength = 5; //how long buffered moves should buffer for (for getups and cancels and such)
 	var chosenMove = noone;
+	var pil_buffer = [5, 0, 0, 0, 0, 0, 0, noone, 1]; // The default current input, assuming nothing happens this frame
+	var pil_last   = pil[_Player.index - 1][array_length(pil[_Player.index - 1]) - 1]; // The last log of inputs in the persistent buffer
+	// Make sure the age is the same between the two so we can check if the inputs are the same later
+	pil_buffer[8] = pil_last[8]; 
+	
 	if(_State == noone){
 		_State = {
 			buffer: noone,
@@ -36,6 +41,10 @@ function InputManager(_Hooks, _State, _Player){
 	//Add the current inputs to the motion buffer
 	array_push(_State.log, string(GetInputDirection()));
 	array_push(_State.pressedLog, string(GetPressedInputDirection()));
+	
+	 // Log the current directional input in the persistent buffer
+	pil_buffer[0] = GetInputDirection();
+	
 	//This clips the motion buffer down to logLength by cutting off of the beginning
 	if(array_length(_State.log) > logLength){
 		array_delete(_State.log, 0, array_length(_State.log) - logLength);
@@ -51,6 +60,38 @@ function InputManager(_Hooks, _State, _Player){
 		var logPointer = array_length(_State.log);
 		var pressedLogPointer = array_length(_State.pressedLog);
 		var i2 = string_length(_Hooks[i].Motion);
+		
+		
+		var cur_pressed = GetInputPressed(_Hooks[i].Input),
+			cur_held	= GetInput(_Hooks[i].Input)
+		
+		 // Write the current status of this input, if it is a button input, to the persistent log
+		switch(_Hooks[i].Input) {
+				/* 
+				Each of these checks if the button was just pressed: if not, check if the last input
+				is the same and consider the button held. Otherwise, the button hasn't been pressed 
+				at all. Will add a on-release clause later.
+				*/
+			case "L": pil_buffer[1] = cur_pressed ? 1 : 
+										(pil_last[1] = 1 or 
+										(cur_held && pil_last[1] = 2) ? 2 : 0) break;
+			case "M": pil_buffer[2] = cur_pressed ? 1 : 
+										(pil_last[2] = 1 or 
+										(cur_held && pil_last[2] = 2) ? 2 : 0) break;
+			case "H": pil_buffer[3] = cur_pressed ? 1 : 
+										(pil_last[3] = 1 or 
+										(cur_held && pil_last[3] = 2) ? 2 : 0) break;
+			case "S": pil_buffer[4] = cur_pressed ? 1 : 
+										(pil_last[4] = 1 or 
+										(cur_held && pil_last[4] = 2) ? 2 : 0) break;
+			case "AD": pil_buffer[5] = cur_pressed ? 1 : 
+										(pil_last[5] = 1 or 
+										(cur_held && pil_last[5] = 2) ? 2 : 0) break;
+			case "DA": pil_buffer[6] = cur_pressed ? 1 : 
+										(pil_last[6] = 1 or 
+										(cur_held && pil_last[6] = 2) ? 2 : 0) break;
+		}
+		
 		//There's either the button input we're looking for 
 		//	or the motion input of this frame is the end of an inputless motion such as dashing
 		//TODO: Add buffer for multi-input moves (AKA grabbing)
@@ -63,7 +104,7 @@ function InputManager(_Hooks, _State, _Player){
 			string_char_at(_Hooks[i].Motion, i2) == _State.log[logPointer - 1] || 
 			_Hooks[i].Input == "" && 
 			string_char_at(_Hooks[i].Motion, i2) == _State.log[logPointer - 1]){
-				
+			
 			var checkPressed = false;
 			while(i2 > 0 && logPointer > 0){
 				if(checkPressed == false && string_char_at(_Hooks[i].Motion, i2) == _State.log[logPointer - 1]
@@ -91,6 +132,10 @@ function InputManager(_Hooks, _State, _Player){
 	_State.buffer = chosenMove;
 	
 	if(_State.buffer != noone){
+		 // Note if the player successfully performed a move in the persistent log
+		//pil_buffer = variable_struct_exists(_State.buffer.Data, "DisplayName") ? _State.buffer.Data.DisplayName : 
+		//																		 _State.buffer.Data.Name;
+		
 		_State.buffer.age++;
 		if(CheckCancels(_State, _Player, _State.buffer.Data)){
 			_State.actions = [];
@@ -107,6 +152,17 @@ function InputManager(_Hooks, _State, _Player){
 			_State.log = [];
 			_State.pressedLog = [];
 		}*/
+	}
+	
+	
+	if(array_equals(pil_buffer, pil_last)) { // If, after everything, the current inputs amount to the same as
+											 // last frame, increase the last frame's age in the persistent log
+		pil[_Player.index - 1][array_length(pil[_Player.index - 1]) - 1][8]++;
+	}
+		// Add the resultant sum of all of the inputs to the persistent log buffer if anything is different
+	else {
+		pil_buffer[8] = 1; // Reset the age of the current input
+		array_push(pil[_Player.index - 1], pil_buffer);
 	}
 	
 	return _State;
