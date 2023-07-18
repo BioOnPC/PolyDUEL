@@ -47,7 +47,8 @@ function ParseActions(_State, _Player){
 				Distance: Action.Distance,
 				Duration: Action.Duration,
 				Ease: Action.Ease,
-				Frame: 0
+				Frame: 0,
+				Direction: _Player.dir
 			}
 			break;
 		case "SetYSpeed":

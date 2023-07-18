@@ -39,11 +39,11 @@ function InputManager(_Hooks, _State, _Player){
 	}
 	
 	//Add the current inputs to the motion buffer
-	array_push(_State.log, string(GetInputDirection()));
-	array_push(_State.pressedLog, string(GetPressedInputDirection()));
+	array_push(_State.log, string(GetInputDirection(_Player)));
+	array_push(_State.pressedLog, string(GetPressedInputDirection(_Player)));
 	
 	 // Log the current directional input in the persistent buffer
-	pil_buffer[0] = GetInputDirection();
+	pil_buffer[0] = GetInputDirection(_Player);
 	
 	//This clips the motion buffer down to logLength by cutting off of the beginning
 	if(array_length(_State.log) > logLength){
@@ -168,17 +168,29 @@ function InputManager(_Hooks, _State, _Player){
 	return _State;
 }
 
-function GetInputDirection(){
-	var _l = GetLeft();
-	var _r = GetRight();
+function GetInputDirection(_Player){
+	var _l, _r;
+	if(_Player.dir == 1){
+		_l = GetLeft();
+		_r = GetRight();
+	} else {
+		_l = GetRight();
+		_r = GetLeft();
+	}
 	var _u = GetUp();
 	var _d = GetDown();
 	return 5 - _l + _r - _d * 3 + _u * 3;
 }
 
-function GetPressedInputDirection(){
-	var _l = GetLeftPressed();
-	var _r = GetRightPressed();
+function GetPressedInputDirection(_Player){
+	var _l, _r;
+	if(_Player.dir == 1){
+		_l = GetLeftPressed();
+		_r = GetRightPressed();
+	} else {
+		_l = GetRightPressed();
+		_r = GetLeftPressed();
+	}
 	var _u = GetUpPressed();
 	var _d = GetDownPressed();
 	return 5 - _l + _r - _d * 3 + _u * 3;

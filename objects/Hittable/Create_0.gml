@@ -20,6 +20,9 @@ hitstun = 0;
 hitstunType = 0;
 combo = 0;
 iframes = 0;
+dir = 1;
+
+team = 0;
 
 IdleAnim = sprite_index;
 
