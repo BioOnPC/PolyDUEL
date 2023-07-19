@@ -58,6 +58,7 @@
     {"id":{"name":"IdIdle","path":"sprites/IdIdle/IdIdle.yy",},},
     {"id":{"name":"InputManager","path":"scripts/InputManager/InputManager.yy",},},
     {"id":{"name":"room_CharSelect","path":"rooms/room_CharSelect/room_CharSelect.yy",},},
+    {"id":{"name":"Editor","path":"objects/Editor/Editor.yy",},},
     {"id":{"name":"CharSelect","path":"objects/CharSelect/CharSelect.yy",},},
     {"id":{"name":"Player","path":"objects/Player/Player.yy",},},
     {"id":{"name":"room_Field","path":"rooms/room_Field/room_Field.yy",},},

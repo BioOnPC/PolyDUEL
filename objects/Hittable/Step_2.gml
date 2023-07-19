@@ -40,11 +40,11 @@ if(Movement != noone){
 	if(Movement.Ease > 0){
 		x += Movement.Distance * 
 			(power(1 - Movement.Frame / Movement.Duration, Movement.Ease) - 
-			power(1 - (Movement.Frame + 1) / Movement.Duration, Movement.Ease)) * Direction
+			power(1 - (Movement.Frame + 1) / Movement.Duration, Movement.Ease)) * Movement.Direction
 	}else{
 		x += Movement.Distance * 
 			(power((Movement.Frame + 1) / Movement.Duration, -Movement.Ease) - 
-			power(Movement.Frame / Movement.Duration, -Movement.Ease)) * Direction
+			power(Movement.Frame / Movement.Duration, -Movement.Ease)) * Movement.Direction
 	}
 	Movement.Frame++;
 	if(Movement.Frame >= Movement.Duration){
@@ -125,15 +125,15 @@ for(var i = 0; i < array_length(Hurtboxes); i++){
 		}
 		for(var i2 = 0; i2 < array_length(Hitboxes); i2++){
 			if(rectangle_in_rectangle(
-				other.x + other.Hurtboxes[i].XOffset - other.Hurtboxes[i].Width / 2, 
+				other.x + other.Hurtboxes[i].XOffset * other.dir - other.Hurtboxes[i].Width / 2, 
 				other.y - other.Hurtboxes[i].YOffset, 
-				other.x + other.Hurtboxes[i].XOffset + other.Hurtboxes[i].Width / 2, 
+				other.x + other.Hurtboxes[i].XOffset * other.dir + other.Hurtboxes[i].Width / 2, 
 				other.y - other.Hurtboxes[i].YOffset - other.Hurtboxes[i].Height, 
-				x + Hitboxes[i2].XOffset - Hitboxes[i2].Width / 2, 
+				x + Hitboxes[i2].XOffset * dir - Hitboxes[i2].Width / 2, 
 				y - Hitboxes[i2].YOffset - Hitboxes[i2].Height / 2, 
-				x + Hitboxes[i2].XOffset + Hitboxes[i2].Width / 2, 
+				x + Hitboxes[i2].XOffset * dir + Hitboxes[i2].Width / 2, 
 				y - Hitboxes[i2].YOffset + Hitboxes[i2].Height / 2)){
-				array_push(collidedHitboxes, [Hitboxes[i2], self, i2, other.x + other.Hurtboxes[i].XOffset > x + Hitboxes[i2].XOffset, x + Hitboxes[i2].XOffset, y - Hitboxes[i2].YOffset]);
+				array_push(collidedHitboxes, [Hitboxes[i2], self, i2, (other.x < x) * 2 - 1, x + Hitboxes[i2].XOffset * dir, y - Hitboxes[i2].YOffset]);
 			}
 		}
 	}
@@ -160,13 +160,13 @@ if(collidedHitbox != noone){
 			switch(collidedHitbox.Hitspark){
 				case "HitSpark":
 					with(effect_create(collidedHitboxData[4], collidedHitboxData[5], HitSpark)){
-						direction = 180 * collidedHitboxData[3];
+						image_xscale = -collidedHitboxData[3];
 					}
 					break;
 			}
 		}
 		if(struct_exists(collidedHitbox, "HorizontalKnockback")){
-			Movement = {Frame: 0, Distance: -collidedHitbox.HorizontalKnockback, Duration: 6, Ease: 1.5}
+			Movement = {Frame: 0, Distance: -collidedHitbox.HorizontalKnockback, Duration: 6, Ease: 1.5, Direction: collidedHitboxData[3]}
 		}
 		if(struct_exists(collidedHitbox, "Hitstop")){
 			GameCont.hitstop = collidedHitbox.Hitstop;

@@ -34,6 +34,7 @@
     {"name":"IdIdle","order":1,"path":"sprites/IdIdle/IdIdle.yy",},
     {"name":"InputManager","order":15,"path":"scripts/InputManager/InputManager.yy",},
     {"name":"room_CharSelect","order":1,"path":"rooms/room_CharSelect/room_CharSelect.yy",},
+    {"name":"Editor","order":9,"path":"objects/Editor/Editor.yy",},
     {"name":"CharSelect","order":6,"path":"objects/CharSelect/CharSelect.yy",},
   ],
 }

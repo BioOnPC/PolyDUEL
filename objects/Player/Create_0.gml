@@ -1,5 +1,6 @@
 event_inherited();
 
+team = 1;
 index = 1;
 cpu   = 0;
 
