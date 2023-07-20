@@ -18,6 +18,7 @@
   ],
   "ResourceOrderSettings": [
     {"name":"copyStruct","order":20,"path":"scripts/copyStruct/copyStruct.yy",},
+    {"name":"room_Editor","order":2,"path":"rooms/room_Editor/room_Editor.yy",},
     {"name":"Actions","order":18,"path":"scripts/Actions/Actions.yy",},
     {"name":"IdSlap","order":3,"path":"sprites/IdSlap/IdSlap.yy",},
     {"name":"InstanceCreate","order":22,"path":"scripts/InstanceCreate/InstanceCreate.yy",},
@@ -25,6 +26,7 @@
     {"name":"GameCont","order":2,"path":"objects/GameCont/GameCont.yy",},
     {"name":"PlayerDataHandler","order":21,"path":"scripts/PlayerDataHandler/PlayerDataHandler.yy",},
     {"name":"Statuses","order":23,"path":"scripts/Statuses/Statuses.yy",},
+    {"name":"EditorButton","order":10,"path":"objects/EditorButton/EditorButton.yy",},
     {"name":"CharSelectButton","order":1,"path":"objects/CharSelectButton/CharSelectButton.yy",},
     {"name":"Hittable","order":4,"path":"objects/Hittable/Hittable.yy",},
     {"name":"Sprite5","order":4,"path":"sprites/Sprite5/Sprite5.yy",},
@@ -35,6 +37,7 @@
     {"name":"InputManager","order":15,"path":"scripts/InputManager/InputManager.yy",},
     {"name":"room_CharSelect","order":1,"path":"rooms/room_CharSelect/room_CharSelect.yy",},
     {"name":"Editor","order":9,"path":"objects/Editor/Editor.yy",},
+    {"name":"EditorFunctions","order":24,"path":"scripts/EditorFunctions/EditorFunctions.yy",},
     {"name":"CharSelect","order":6,"path":"objects/CharSelect/CharSelect.yy",},
   ],
 }

@@ -1,4 +1,5 @@
 function LoadPlayerData(){
+	moveCharacterData();
 	var Players = {};
 	var file_name = file_find_first("Characters/*.json", 0);
 
@@ -19,4 +20,16 @@ function LoadPlayerData(){
 
 	file_find_close(); 
 	return Players;
+}
+
+function moveCharacterData(){
+	var file_name = file_find_first("Characters/*.json", 0);
+	if (file_name == ""){
+		var included_file_name = file_find_first("IncludedCharacters/*.json", 0);
+		while (included_file_name != "")
+		{
+			file_copy("IncludedCharacters/" + included_file_name, "Characters/" + included_file_name);
+			included_file_name = file_find_next();
+		}
+	}
 }

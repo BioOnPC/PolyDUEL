@@ -9,3 +9,4 @@ for(var i = 0; i < array_length(CharacterFileNames); i++){
 		trace(Text);
 	}
 }
+instance_create_layer(room_width/2, room_height/2 + 150, layer, EditorButton)

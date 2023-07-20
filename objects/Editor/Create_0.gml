@@ -1,15 +1,4 @@
-Data = {
-	name: "TESTNAME",
-	Moves: [
-	{
-		name: "",
-		actions: [
-			{name: "action1"},
-			{name: "action2"}
-		]
-	}
-	]
-}
+Data = LoadPlayerData();
 
 SelectedStruct = [];
 RebuildTree = true;

@@ -41,4 +41,7 @@ PlayerData = {
     BackwardWalkSpeed: 2,
     Gravity: 1,
     IdleAnim: "Sprite1"
-  }}
+  },
+  Moves: [
+  ]
+}

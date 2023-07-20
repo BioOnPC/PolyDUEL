@@ -70,13 +70,13 @@ function ParseActions(_State, _Player){
 			array_push(_Player.StatusEffects, {Effect: "SetSprite", Sprite: Action.Sprite, Duration: Action.Duration})
 			break;
 		case "CallMoveIfDirectionHeld":
-			if(string(GetInputDirection()) == Action.Button){
+			if(string(GetInputDirection(_Player)) == Action.Button){
 				CallMove(_State, _Player, Action.Move);
 				return false;
 			}
 			break;
 		case "CallMoveIfDirectionPressed":
-			if(string(GetPressedInputDirection()) == Action.Button){
+			if(string(GetPressedInputDirection(_Player)) == Action.Button){
 				CallMove(_State, _Player, Action.Move);
 				return false;
 			}
@@ -109,7 +109,7 @@ function ParseActions(_State, _Player){
 }
 
 function CallMove(_State, _Player, _Move){
-	var MoveToCall = [];
+	var MoveToCall = {Actions: []};
 	for(var i = 0; i < array_length(_Player.PlayerData.Moves); i++){
 		if(_Player.PlayerData.Moves[i].Name == _Move){
 			MoveToCall = _Player.PlayerData.Moves[i];

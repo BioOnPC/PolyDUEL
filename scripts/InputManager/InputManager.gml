@@ -232,16 +232,12 @@ function GetInput(Name){
 	switch(Name){
 		case "L":
 			return keyboard_check(ord("H"));
-			break;
 		case "M":
 			return keyboard_check(ord("J"));
-			break;
 		case "H":
 			return keyboard_check(ord("K"));
-			break;
 		case "S":
 			return keyboard_check(ord("L"));
-			break;
 	}
 }
 
@@ -249,15 +245,11 @@ function GetInputPressed(Name){
 	switch(Name){
 		case "L":
 			return keyboard_check_pressed(ord("H"));
-			break;
 		case "M":
 			return keyboard_check_pressed(ord("J"));
-			break;
 		case "H":
 			return keyboard_check_pressed(ord("K"));
-			break;
 		case "S":
 			return keyboard_check_pressed(ord("L"));
-			break;
 	}
 }

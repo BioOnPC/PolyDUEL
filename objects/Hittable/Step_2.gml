@@ -139,15 +139,15 @@ for(var i = 0; i < array_length(Hurtboxes); i++){
 	}
 }
 
-var collidedHitbox = noone;
+var collidedHitbox = {Disabled: true};
 var collidedHitboxData = [];
 for(var i = 0; i < array_length(collidedHitboxes); i++){
-	if(collidedHitbox == noone || collidedHitboxes[i][0].Priority > collidedHitbox.Priority){
+	if(!struct_exists(collidedHitbox, "Priority") || collidedHitboxes[i][0].Priority > collidedHitbox.Priority){
 		collidedHitbox = collidedHitboxes[i][0];
 		collidedHitboxData = collidedHitboxes[i];
 	}
 }
-if(collidedHitbox != noone){
+if(!struct_exists(collidedHitbox, "Disabled")){
 	if(iframes <= 0){
 		StatusHit(self);
 		if(struct_exists(collidedHitbox, "OnHit") && variable_instance_exists(collidedHitboxData[1], "State")){

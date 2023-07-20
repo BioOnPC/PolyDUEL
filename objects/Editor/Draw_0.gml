@@ -31,10 +31,10 @@ if(RebuildTree){
 					continue;
 				}
 				if(prechild){
-					array_insert(TreeButtons, prechildindex, {layer: i, name: structNames[i2]});
+					array_insert(TreeButtons, prechildindex, {layer: i+1, id: structNames[i2], name: structNames[i2]});
 					prechildindex++;
 				}else{
-					array_push(TreeButtons, {layer: i, name: structNames[i2]});
+					array_push(TreeButtons, {layer: i+1, id: structNames[i2], name: structNames[i2]});
 				}
 				if(prechild && i < array_length(SelectedStruct) && structNames[i2] == SelectedStruct[i]){
 					prechild = false;
@@ -46,15 +46,14 @@ if(RebuildTree){
 				if(!is_array(val) && !is_struct(val)){
 					if(i == array_length(SelectedStruct)){
 						array_push(Buttons, {selected: false, name: i2, data: i2});
-						show_debug_message(string(i2));
 					}
 					continue;
 				}
 				if(prechild){
-					array_insert(TreeButtons, prechildindex, {layer: i, name: i2});
+					array_insert(TreeButtons, prechildindex, {layer: i+1, id: i2, name: is_struct(val) && struct_exists(val, "Name") ? val.Name : i2});
 					prechildindex++;
 				}else{
-					array_push(TreeButtons, {layer: i, name: i2});
+					array_push(TreeButtons, {layer: i+1, id: i2, name: is_struct(val) && struct_exists(val, "Name") ? val.Name : i2});
 				}
 				if(prechild && i < array_length(SelectedStruct) && i2 == SelectedStruct[i]){
 					prechild = false;
@@ -75,48 +74,31 @@ for(var i = 0; i < array_length(SelectedStruct); i++){
 }
 
 for(var i = 0; i < array_length(Buttons); i++){
-	if(button(10, room_height*2/5 + 50*i, room_width*2/5-20, 40, Buttons[i].selected)){
-		Buttons[0].selected = true;
-		keyboard_string = struct_get(Data, Buttons[i].data);
+	if(editorButton(10, room_height*2/5 + 50*i, room_width*2/5-20, 40, Buttons[i].selected)){
+		Buttons[i].selected = true;
+		keyboard_string = struct_get(currentStruct, Buttons[i].data);
 	}else if(mouse_check_button_pressed(mb_left)){
-		Buttons[0].selected = false;
-	}else if(Buttons[0].selected){
-		struct_set(Data, Buttons[0].data, keyboard_string);
+		Buttons[i].selected = false;
+	}else if(Buttons[i].selected){
+		struct_set(currentStruct, Buttons[i].data, keyboard_string);
 	}
 	draw_set_color(c_black);
-	draw_set_halign(fa_middle);
-	draw_text(room_width/5, room_height/2.5, string(Buttons[0].name) + ": " + (is_struct(currentStruct) ? struct_get(currentStruct, Buttons[i].data) : currentStruct[Buttons[i].data]));
+	draw_set_halign(fa_center);
+	draw_text(room_width/5, room_height*2/5 + 50*i, string(Buttons[i].name) + ": " + string(is_struct(currentStruct) ? struct_get(currentStruct, Buttons[i].data) : currentStruct[Buttons[i].data]));
 }
 
 
 for(var i = 0; i < array_length(TreeButtons); i++){
-	if(button(room_width*2/5+TreeButtons[i].layer*50, 10 + 50 * i, room_width*3/5-10-TreeButtons[i].layer*50, 40, 
-		TreeButtons[i].layer == array_length(SelectedStruct) - 1 && TreeButtons[i].name == SelectedStruct[TreeButtons[i].layer])){
-		while(array_length(SelectedStruct) > TreeButtons[i].layer){
+	if(editorButton(room_width*2/5+TreeButtons[i].layer*50, 10 + 50 * i, room_width*3/5-10-TreeButtons[i].layer*50, 40, 
+		TreeButtons[i].layer == array_length(SelectedStruct) - 1 && TreeButtons[i].id == SelectedStruct[TreeButtons[i].layer])){
+		while(array_length(SelectedStruct) >= TreeButtons[i].layer){
 			array_pop(SelectedStruct);
 		}
-		array_push(SelectedStruct, TreeButtons[i].name);
+		array_push(SelectedStruct, TreeButtons[i].id);
 		RebuildTree = true;
 		//TREE NEEDS TO BE REBUILT, DO NOT HAVE CODE THAT EXPECTS SelectedStruct TO MAKE SENSE WITH TreeButtons OR Buttons AFTER THIS POINT
 	}
 	draw_set_color(c_black);
 	draw_set_halign(fa_left);
 	draw_text(room_width*2/5+TreeButtons[i].layer*50, 10 + 50 * i, string(TreeButtons[i].name));
-}
-
-function button(x,y,w,h, selected){
-	var positioned = point_in_rectangle(mouse_x, mouse_y, x,y,x+w,y+h);
-	var activated = mouse_check_button(mb_left) && positioned;
-	draw_set_color(make_color_rgb(120, 125, 130));
-	if(selected){
-		draw_set_color(make_color_rgb(105, 110, 115));
-	}
-	if(positioned){
-		draw_set_color(make_color_rgb(100, 105, 110));
-	}
-	if(activated){
-		draw_set_color(make_color_rgb(90, 95, 100));
-	}
-	draw_button(x, y, x+w, y+h, activated);
-	return mouse_check_button_pressed(mb_left) && positioned;
 }

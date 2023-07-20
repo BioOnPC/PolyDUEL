@@ -44,13 +44,11 @@ function StatusHit(_Player){
 				array_delete(_Player.StatusEffects, i, 1);
 				i--;
 				continue;
-			break;
 			case "HurtboxModification":
 				_Player.Hurtboxes[Status.ID] = _Player.PlayerData.Attributes.Hurtboxes[Status.ID];
 				array_delete(_Player.StatusEffects, i, 1);
 				i--;
 				continue;
-			break;
 			case "SetSprite":
 				array_delete(_Player.StatusEffects, i, 1);
 				i--;
