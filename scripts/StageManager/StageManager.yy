@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "PlayerDataHandler",
+  "name": "StageManager",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

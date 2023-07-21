@@ -23,6 +23,9 @@ pil					= [[[5, 0, 0, 0, 0, 0, 0, noone, 1]]];
 input_mode			= [[]];		// Tracks which input method either player is using, will be implemented later
 mode				= m_menu;	// Tracks the current gamestate
 save_replay			= false;	// Determines whether inputs should be saved for replays
+ 
+scrStageHandler();				// Initializes all of the stage information
+stage				= "";
 
 #macro pil				UberCont.persistent_input_log
 
