@@ -10,7 +10,7 @@ function set_stage(_stage) {
 		if(struct_stage = undefined) return false;				// Return false if no stage is found with that name
 	}
 	
-	with(StageCont) {
+	with(StageLayer) {
 		 // Set the sprite used for the stage
 		stage_image = struct_stage.sprite;
 		stage_index = foreground ? 0 : struct_stage.foreground;

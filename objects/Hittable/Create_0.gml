@@ -21,6 +21,7 @@ hitstunType = 0;
 combo = 0;
 iframes = 0;
 dir = 1;
+inputdir = 1;
 
 team = 0;
 

@@ -170,7 +170,7 @@ function InputManager(_Hooks, _State, _Player){
 
 function GetInputDirection(_Player){
 	var _l, _r;
-	if(_Player.dir == 1){
+	if(_Player.inputdir == 1){
 		_l = GetLeft();
 		_r = GetRight();
 	} else {
@@ -184,7 +184,7 @@ function GetInputDirection(_Player){
 
 function GetPressedInputDirection(_Player){
 	var _l, _r;
-	if(_Player.dir == 1){
+	if(_Player.inputdir == 1){
 		_l = GetLeftPressed();
 		_r = GetRightPressed();
 	} else {

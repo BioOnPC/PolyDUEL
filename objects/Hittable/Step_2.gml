@@ -52,12 +52,12 @@ if(Movement != noone){
 	}
 }
 
-if(y < 220 || yspeed < 0){
+if(y < StageCont.boundaries.Floor || yspeed < 0){
 	y += yspeed;
 	yspeed += Gravity;
 	Grounded = false;
 } else {
-	y = 220;
+	y = StageCont.boundaries.Floor;
 	if(Grounded == false){
 		if(State != noone){
 			if(LandingCancel){
@@ -147,7 +147,7 @@ for(var i = 0; i < array_length(collidedHitboxes); i++){
 		collidedHitboxData = collidedHitboxes[i];
 	}
 }
-if(!struct_exists(collidedHitbox, "Disabled")){
+if(!struct_exists(collidedHitbox, "Disabled") || collidedHitbox.Disabled == false){
 	if(iframes <= 0){
 		StatusHit(self);
 		if(struct_exists(collidedHitbox, "OnHit") && variable_instance_exists(collidedHitboxData[1], "State")){
@@ -184,5 +184,5 @@ if(!struct_exists(collidedHitbox, "Disabled")){
 }
 
 //Walls
-if x > 420 x = 420;
-if x < 10 x = 10;
+if x > StageCont.boundaries.RWall x = StageCont.boundaries.RWall;
+if x < StageCont.boundaries.LWall x = StageCont.boundaries.LWall;
