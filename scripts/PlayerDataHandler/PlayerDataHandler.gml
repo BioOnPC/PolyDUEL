@@ -33,3 +33,15 @@ function moveCharacterData(){
 		}
 	}
 }
+
+function reloadCharacter(){
+	Gravity = PlayerData.Attributes.Gravity;
+
+	IdleAnim = asset_get_index(PlayerData.Attributes.IdleAnim);
+
+	Hurtboxes = [];
+
+	for(var i = 0; i < array_length(PlayerData.Attributes.Hurtboxes); i++){
+		array_push(Hurtboxes, PlayerData.Attributes.Hurtboxes[i]);
+	}
+}
