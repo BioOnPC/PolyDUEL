@@ -17,8 +17,6 @@ function set_stage(_stage) {
 		
 		 // Copies the relevant layers
 		array_copy(layers, 0, struct_stage.layers, foreground ? 0 : struct_stage.foreground, foreground ? struct_stage.foreground : array_length(struct_stage.layers));
-		trace(layers)
-		trace(foreground)
 	}
 	
 	return true;
@@ -38,7 +36,7 @@ function scrStageHandler() {
 	with(list_stages) {
 		order = [];
 		
-		training = { name : "Training Room", sprite : stgTraining, foreground: 2, 
+		training = { name : "Training Room", sprite : stgTraining, foreground: 1, 
 					 layers : [
 						 [1, 0],
 						 [1, 0],
