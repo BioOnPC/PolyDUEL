@@ -1,3 +1,5 @@
+//most of the logic is in Draw
+
 with(Hittable){
 	if(State != noone && array_length(State.actions) <= 0 && Movement == noone && y >= StageCont.boundaries.Floor && array_length(other.SelectedStruct) > 2 && other.SelectedStruct[1] == "Moves"){
 		var move = other.Data
@@ -11,12 +13,15 @@ with(Hittable){
 				move = move[other.SelectedStruct[i]];
 			}
 		}
-		if(is_struct(move) && struct_exists(move, "Input")){
+		if(other.repeatDelay <= 0 && is_struct(move) && struct_exists(move, "Input")){
 			x = (StageCont.boundaries.LWall + StageCont.boundaries.RWall) / 2;
 			y = StageCont.boundaries.Floor;
 			yspeed = 0;
 			Grounded = true;
 			CallAction(State, move.Actions);
 		}
+	}else{
+		other.repeatDelay = 60;
 	}
 }
+repeatDelay--;

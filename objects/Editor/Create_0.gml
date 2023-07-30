@@ -9,6 +9,8 @@ Buttons = [];
 Scroll = 0;
 TreeScroll = 0;
 
+repeatDelay = 0;
+
 StageCont.boundaries = {Floor: room_height/2.5-60, Ceiling: 10, LWall: 10, RWall: room_width/2.5-10};
 
 with(Hittable){

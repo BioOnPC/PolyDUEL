@@ -5,6 +5,13 @@ draw_rectangle(0,0,room_width, room_height, 0);
 
 draw_set_color(make_color_rgb(0, 0, 0));
 draw_rectangle(10,10,room_width/2.5-10, room_height/2.5-10, 0);
+var _l = -(StageCont.boundaries.LWall + StageCont.boundaries.RWall) / 2 + sprite_get_width(stgTraining) - sprite_get_xoffset(stgTraining) + 10;
+var _t = sprite_get_height(stgTraining) - (room_height/2.5-10);
+var _w = room_width/2.5-20;
+var _h = room_height/2.5-20;
+for(var i = sprite_get_number(stgTraining); i > 0; i--){
+	draw_sprite_part(stgTraining, i - 1, _l, _t, _w, _h, 10, 10);
+}
 
 if(RebuildTree){
 	RebuildTree = false;
