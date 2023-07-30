@@ -1,3 +1,5 @@
+///Heads up, there is logic in here because I'm lazy
+
 draw_set_color(make_color_rgb(80, 90, 100));
 draw_rectangle(0,0,room_width, room_height, 0);
 
@@ -42,18 +44,24 @@ if(RebuildTree){
 			}
 		}else if(is_array(struct)){
 			for(var i2 = 0; i2 < array_length(struct); i2++){
-				var val = struct[i2];
+				var val = array_get(struct, i2);
 				if(!is_array(val) && !is_struct(val)){
 					if(i == array_length(SelectedStruct)){
 						array_push(Buttons, {selected: false, name: i2, data: i2});
 					}
 					continue;
 				}
+				var name = i2;
+				if(is_struct(val)){
+					if(struct_exists(val, "Name")){
+						name = val.Name;
+					}
+				}
 				if(prechild){
-					array_insert(TreeButtons, prechildindex, {layer: i+1, id: i2, name: is_struct(val) && struct_exists(val, "Name") ? val.Name : i2});
+					array_insert(TreeButtons, prechildindex, {layer: i+1, id: i2, name: name});
 					prechildindex++;
 				}else{
-					array_push(TreeButtons, {layer: i+1, id: i2, name: is_struct(val) && struct_exists(val, "Name") ? val.Name : i2});
+					array_push(TreeButtons, {layer: i+1, id: i2, name: name});
 				}
 				if(prechild && i < array_length(SelectedStruct) && i2 == SelectedStruct[i]){
 					prechild = false;
@@ -103,7 +111,7 @@ for(var i = 0; i < array_length(Buttons); i++){
 
 
 for(var i = 0; i < array_length(TreeButtons); i++){
-	if(editorButton(room_width*2/5+TreeButtons[i].layer*50, 10 + 50 * i, room_width*3/5-10-TreeButtons[i].layer*50, 40, 
+	if(editorButton(room_width*2/5+TreeButtons[i].layer*50, 10 + 50 * i - TreeScroll, room_width*3/5-50-TreeButtons[i].layer*50, 40, 
 		TreeButtons[i].layer == array_length(SelectedStruct) && TreeButtons[i].id == SelectedStruct[TreeButtons[i].layer - 1])){
 		while(array_length(SelectedStruct) >= TreeButtons[i].layer){
 			array_pop(SelectedStruct);
@@ -118,5 +126,22 @@ for(var i = 0; i < array_length(TreeButtons); i++){
 	}
 	draw_set_color(c_black);
 	draw_set_halign(fa_left);
-	draw_text(room_width*2/5+TreeButtons[i].layer*50, 10 + 50 * i, string(TreeButtons[i].name));
+	draw_text(room_width*2/5+TreeButtons[i].layer*50, 10 + 50 * i - TreeScroll, string(TreeButtons[i].name));
 }
+
+draw_set_color(make_color_rgb(105, 110, 115));
+draw_button(room_width-40, 10, room_width-10, room_height-10, true)
+if(editorButton(room_width-40, 10, 30, 30, true) || mouse_wheel_up()){
+	if(TreeScroll > 0){
+		TreeScroll -= 50;
+	}
+}
+if(editorButton(room_width-40, room_height-40, 30, 30, true) || mouse_wheel_down()){
+	if(TreeScroll < array_length(TreeButtons) * 50 - 50){
+		TreeScroll += 50;
+	}
+}
+draw_set_color(make_color_rgb(130, 135, 140));
+var size = (1/array_length(TreeButtons)) * (room_height - 80);
+var pos = (TreeScroll / (array_length(TreeButtons) * 50)) * (room_height - 80);
+draw_button(room_width-39, 40 + pos, room_width-11, 40 + size + pos, true)

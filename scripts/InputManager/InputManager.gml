@@ -138,13 +138,7 @@ function InputManager(_Hooks, _State, _Player){
 		
 		_State.buffer.age++;
 		if(CheckCancels(_State, _Player, _State.buffer.Data)){
-			_State.actions = [];
-			for(var i = 0; i < array_length(_State.buffer.Data.Actions); i++){
-				array_push(_State.actions, _State.buffer.Data.Actions[i]);
-			}
-			_State.buffer = noone;
-			_State.log = [];
-			_State.pressedLog = [];
+			CallAction(_State, _State.buffer.Data.Actions);
 		}
 		//If the move executes successfully, dump the buffer
 		/*if(script_execute(_State.buffer.hook, _Player)){

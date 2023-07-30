@@ -9,6 +9,17 @@ function EnsureStateInit(_Player){
 	}
 }
 
+function CallAction(_State, _Action){
+	_State.actions = [];
+	for(var i = 0; i < array_length(_Action); i++){
+		array_push(_State.actions, _Action[i]);
+	}
+	_State.buffer = noone;
+	_State.log = [];
+	_State.pressedLog = [];
+	return _State;
+}
+
 function ParseActions(_State, _Player){
 	if(_State == noone || array_length(_State.actions) <= 0){
 		return true;

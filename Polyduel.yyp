@@ -32,7 +32,7 @@
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Example.json","CopyToMask":-1,"filePath":"datafiles/IncludedCharacters",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Id.json","CopyToMask":-1,"filePath":"datafiles/IncludedCharacters",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Id.json","CopyToMask":3035426170322551022,"filePath":"datafiles/IncludedCharacters",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Phantasmagoria.json","CopyToMask":-1,"filePath":"datafiles/IncludedCharacters",},
   ],
   "isEcma": false,

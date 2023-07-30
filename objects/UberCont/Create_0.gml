@@ -26,6 +26,7 @@ save_replay			= false;	// Determines whether inputs should be saved for replays
  
 scrStageHandler();				// Initializes all of the stage information
 stage				= "";
+list_stages = {};
 
 #macro pil				UberCont.persistent_input_log
 
